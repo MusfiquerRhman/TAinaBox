@@ -10,7 +10,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow: hidden;
 }
 
 body {
@@ -20,6 +19,7 @@ body {
     background-size: 100vw 100vh;
     transition: 0.5s;
     color: var(--color-text);
+    position: relative;
 
     &::-webkit-scrollbar {
         width: 0.5rem;
@@ -31,13 +31,29 @@ body {
     }
 }
 
-input::placeholder {
-    font-family: var(--font-normal);
+main {
+    width: 100%;
+    background: var(--color-gray--light);
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 0;
+    }
 }
 
 a {
     text-decoration: none;
     color: var(--color-text);
+}
+
+input::placeholder {
+    font-family: var(--font-normal);
 }
 
 .title-primary {
@@ -63,7 +79,20 @@ a {
     font-size: 1rem;
 }
 
+.bordered__button {
+    @include flex__center__row;
+
+    cursor: pointer;
+    padding: 0.5rem 3rem;
+    background: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--color-green);
+    border-radius: var(--border-radius);
+}
+
 .contained__button {
+    @include flex__center__row;
     padding: 1rem 3rem;
     border-radius: var(--border-radius);
     background: var(--color-green);
@@ -74,10 +103,12 @@ a {
     cursor: pointer;
     margin-top: 2rem;
     font-family: var(--font-bold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+}
+
+.margin__bottom {
+    &:not(:last-child){
+        margin-bottom: 1rem;
+    }
 }
 
 .float__left {
@@ -95,4 +126,3 @@ a {
 .container {
     display: flex;
 }
-

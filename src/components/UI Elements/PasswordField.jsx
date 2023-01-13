@@ -2,7 +2,6 @@ import KeyIcon from '@mui/icons-material/Key';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import React, { useState } from "react";
-import './UIElements.scss';
 
 const PasswordField = React.memo((props) => {
     const {value, onChange} = props;

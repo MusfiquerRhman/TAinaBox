@@ -47,3 +47,30 @@
         }
     }
 }
+
+
+.tab__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 2px 2px 5px var(--color-shadow);
+
+    .tab__button {
+        flex: 1;
+        padding: 0.75rem;
+        background: var(--color-background);
+        border-bottom: 2px solid var(--color-green);
+        font-family: var(--font-bold);
+        font-size: 1.15rem;
+
+        &:not(:last-child) {
+            border-right: 2px solid var(--color-green);
+        }
+    }
+
+    .active {
+        background: var(--color-green);
+        color: var(--color-white);
+        font-family: var(--font-bold);
+    }
+}

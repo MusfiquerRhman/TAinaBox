@@ -1,18 +1,12 @@
 .login__container {
+    @include flex__center__column;
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     background-image: url('../../assets/Patterns/Square\ Pattern\ Final/Pattern square-gray.jpg');
 
     .login__title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flex__center__column;
         backdrop-filter: blur(4px);
         min-width: 500px;
         width: 30%;

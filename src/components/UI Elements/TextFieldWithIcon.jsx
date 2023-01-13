@@ -1,5 +1,4 @@
 import React from "react";
-import './UIElements.scss';
 
 const TextFieldWithIcon = React.memo((props) => {
     const {text, Icon, type, value, onChange} = props;
