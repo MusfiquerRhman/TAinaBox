@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-image: url('../assets/Patterns/Square\ Pattern\ Final/Pattern square-gray.jpg');
+    background-image: url('../../assets/Patterns/Square\ Pattern\ Final/Pattern square-gray.jpg');
 
     .login__title {
         display: flex;
@@ -16,17 +16,5 @@
         backdrop-filter: blur(4px);
         min-width: 500px;
         width: 30%;
-
-        .login__title-primary {
-            font-size: 3rem;
-        }
-
-        .login__title-secondary {
-            font-size: 2rem;
-        }
-    }
-    
-    .login__actions {
-        width: 80%;
     }
 }

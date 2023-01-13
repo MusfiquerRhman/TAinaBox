@@ -1,0 +1,62 @@
+.sidebar__container {
+    background: var(--color-green--dark);
+    background-image: url('../../assets/Patterns/Icon\ Pattern\ Final/Icon Background-dkgreen.jpg');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    color: var(--color-white);
+    min-width: 260px;
+    height: 100vh;
+    box-shadow: 2px 2px 5px var(--color-shadow);
+    
+    .sidebar__title-box {
+        height: 12rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 5rem;
+        
+        .sidebar__title {
+            font-family: var(--font-bold);
+            font-size: 2rem;
+        }
+    }
+
+    .sidebar__links {
+        padding: 2rem 0 2rem 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+
+        .sidebar__link {
+            color: var(--color-white);
+            font-size: 1.25rem;
+            padding: 0.75rem 0.25rem 0.75rem 3rem;
+            border-left: 5px solid transparent;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            backdrop-filter: blur(3px);
+
+            .sidebar__link--text {
+                padding: 0.5rem;
+            }
+
+            &:last-child {
+                margin-bottom: 5rem;
+            }
+        }
+        
+        .active {
+            transition: var(--transition);
+            border-left: 5px solid var(--color-white);
+            background: var(--color-green);
+            box-shadow: 0 2px 5px var(--color-shadow);
+    
+            .sidebar__link--text {
+                color: var(--color-white);
+            }
+        }
+    }
+}

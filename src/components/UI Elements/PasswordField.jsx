@@ -2,8 +2,9 @@ import KeyIcon from '@mui/icons-material/Key';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import React, { useState } from "react";
+import './UIElements.scss';
 
-const PasswordField = (props) => {
+const PasswordField = React.memo((props) => {
     const {value, onChange} = props;
 
     const [isVisible, setIsVisible] = useState(false);
@@ -40,6 +41,6 @@ const PasswordField = (props) => {
             </button>
         </div>    
     )
-}
+})
 
 export default PasswordField;

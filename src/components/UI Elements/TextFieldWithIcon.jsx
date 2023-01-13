@@ -1,6 +1,7 @@
 import React from "react";
+import './UIElements.scss';
 
-const TextFieldWithIcon = (props) => {
+const TextFieldWithIcon = React.memo((props) => {
     const {text, Icon, type, value, onChange} = props;
     return (
         <div className="input__box">
@@ -17,6 +18,6 @@ const TextFieldWithIcon = (props) => {
             />
         </div>    
     )
-}
+})
 
 export default TextFieldWithIcon;

@@ -1,8 +1,9 @@
 .input__container {
-    background: var(--color-light--gray);
+    background: var(--color-gray--light);
     min-width: 375px;
     width: 30%;
-    height: 40%;
+    height: fit-content;
+    padding: 4rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,7 +32,6 @@
                 opacity: 1;
                 font-size: 1rem;
             }
-
         }
 
         .input__icon-container {
