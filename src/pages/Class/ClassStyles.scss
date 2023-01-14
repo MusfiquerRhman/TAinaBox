@@ -1,3 +1,11 @@
 .class__container {
     padding: 1rem 2rem;
+
+    .topic__container {
+        margin-top: 1rem;
+    }
+
+    .analytics__cards {
+        @include flex__center__row;
+    }
 }

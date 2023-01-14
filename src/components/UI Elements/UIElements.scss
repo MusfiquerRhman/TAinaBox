@@ -74,3 +74,29 @@
         font-family: var(--font-bold);
     }
 }
+
+.analytic__card {
+    @include flex__center__column;
+    background: var(--color-white);
+    // max-width: 250px;
+    width: 25%;
+    border-radius: var(--border-radius);
+    box-shadow: 2px 2px 5px var(--color-shadow);
+    padding: 1rem;
+
+    .analytic__card-value {
+        font-family: var(--font-bold);
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .analytic__card-text {
+        font-size: 1.25rem;
+        font-family: var(--font-semibold);
+        text-transform: capitalize;
+    }
+
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
+}

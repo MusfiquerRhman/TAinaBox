@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Tabs from '../../components/UI Elements/Tabs';
+import Participant from './Participant';
+import Topic from './Topic';
 
 const ClassPage = () => {
     const [selectedComponent, setSelectedComponent] = useState(0);
@@ -14,7 +16,15 @@ const ClassPage = () => {
         <>
             <Header />
             <section className='class__container'>
-                <Tabs activeIndex={selectedComponent} handleChange={handleChangeSelectComponent}/>
+                <Tabs activeIndex={selectedComponent} 
+                    handleChange={handleChangeSelectComponent}
+                />
+                {selectedComponent === 0 && (
+                    <Topic />
+                )}
+                {selectedComponent === 1 && (
+                    <Participant />
+                )}
             </section>
         </>
     )

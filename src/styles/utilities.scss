@@ -1,3 +1,31 @@
+@font-face {
+    font-family: Rajdhani_Light;
+    src: local(Rajdhani_Light), url("../assets/fonts/Rajdhani-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Rajdhani;
+    src: local(Rajdhani), url("../assets/fonts/Rajdhani-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Rajdhani_semibold;
+    src: local(Rajdhani_semibold), url("../assets/fonts/Rajdhani-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Rajdhani_Bold;
+    src: local(Rajdhani_Bold), url("../assets/fonts/Rajdhani-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
 @mixin flex__center__row {
     display: flex;
     align-items: center;
@@ -10,25 +38,4 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-@font-face {
-    font-family: Rajdhani;
-    src: local(Rajdhani), url("../assets/fonts/Rajdhani-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: Rajdhani_Bold;
-    src: local(Rajdhani_Bold), url("../assets/fonts/Rajdhani-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: Rajdhani_Light;
-    src: local(Rajdhani_Light), url("../assets/fonts/Rajdhani-Light.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 300;
 }
