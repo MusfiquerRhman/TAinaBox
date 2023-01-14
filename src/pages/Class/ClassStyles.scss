@@ -1,11 +1,28 @@
 .class__container {
     padding: 1rem 2rem;
 
-    .topic__container {
-        margin-top: 1rem;
-    }
-
     .analytics__cards {
         @include flex__center__row;
     }
+
+    .topic__container {
+        margin-top: 1rem;
+
+        .topic__topics {
+            margin-top: 1rem;
+        }
+        
+        .topic__topics--list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .related__section {
+            display: flex;
+            flex-direction: row;
+            margin-top: 2rem;
+        }
+    }
 }
+

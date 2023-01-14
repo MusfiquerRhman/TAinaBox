@@ -1,6 +1,6 @@
 .input__container {
     background: var(--color-gray--light);
-    min-width: 375px;
+    min-width: 475px;
     width: 30%;
     height: fit-content;
     padding: 4rem 0;
@@ -98,5 +98,24 @@
 
     &:not(:last-child) {
         margin-right: 1rem;
+    }
+}
+
+.search__container {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+
+
+    .search__input {
+        background-color: var(--color-green--very-light);
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+
+        &::placeholder {
+            font-family: var(--font-normal);
+            color: var(--color-text);
+        }
     }
 }

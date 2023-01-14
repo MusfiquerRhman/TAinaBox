@@ -20,6 +20,8 @@ body {
     transition: 0.5s;
     color: var(--color-text);
     position: relative;
+    // width: 100%;
+    // max-width: 1920px;
 
     &::-webkit-scrollbar {
         width: 0.5rem;
@@ -82,26 +84,25 @@ input::placeholder {
 .bordered__button {
     @include flex__center__row;
 
-    cursor: pointer;
     padding: 0.5rem 3rem;
-    background: transparent;
-    font-weight: bold;
     font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: transparent;
     border: 2px solid var(--color-green);
     border-radius: var(--border-radius);
 }
 
 .contained__button {
     @include flex__center__row;
-    padding: 1rem 3rem;
+    padding: 0.75rem 3rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 2rem;
     border-radius: var(--border-radius);
     background: var(--color-green);
     color: var(--color-white);
-    font-size: 1rem;
-    font-weight: 600;
-    display: block;
-    cursor: pointer;
-    margin-top: 2rem;
     font-family: var(--font-bold);
 }
 
@@ -109,6 +110,10 @@ input::placeholder {
     &:not(:last-child){
         margin-bottom: 1rem;
     }
+}
+
+.margin__top {
+    margin-top: 1rem;
 }
 
 .float__left {
@@ -125,4 +130,25 @@ input::placeholder {
 
 .container {
     display: flex;
+}
+
+
+.section__buttons {
+    background-color: var(--color-gray--light);
+    padding: 0.5rem 0;
+    border-radius: var(--border-radius);
+}
+
+.section__button {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+}
+
+.warning__button {
+    border: 2px solid var(--color-red);
+    color: var(--color-red);
+}
+
+.margin-left {
+    margin: 1rem 1rem 0 1rem;
 }
