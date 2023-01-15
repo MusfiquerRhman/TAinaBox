@@ -1,11 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './styles/index.scss';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { ParticipantProvider } from "./contexts/ParticipantsContext";
+import { QueryProvider } from "./contexts/QueryContext";
+import { TopicProvider } from "./contexts/TopicContext";
+import "./styles/index.scss";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <TopicProvider>
+      <QueryProvider>
+        <ParticipantProvider>
+          <App />
+        </ParticipantProvider>
+      </QueryProvider>
+    </TopicProvider>
   </React.StrictMode>
 );

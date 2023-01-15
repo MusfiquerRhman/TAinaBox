@@ -1,17 +1,25 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import TopicIcon from '@mui/icons-material/Topic';
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const QueryRow = React.memo(props => {
-    const {query, answer, timeFrame, read, feedBack} = props;
-    
+    const {query, answer, timeFrame, read, handleClickSelected, selected} = props;
+    const [isSelected, setIsSelected] = useState(false);
+
     const handleClick = () => {
-        console.log('clicked')
+        setIsSelected(currentState => !currentState);
+        handleClickSelected(query);
     }
 
+    useEffect(() => {
+        if(selected !== query){
+            setIsSelected(false);
+        }
+    }, [query, selected])
+
     return (
-        <div className='topic__row' onClick={handleClick}>
+        <div className={`topic__row ${isSelected && 'selected'}`} onClick={handleClick}>
             <TopicIcon className='topic__icon'/>
             <div className='topic__detail'>
                 <div className='topic__title'>

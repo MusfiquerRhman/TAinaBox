@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Tabs from '../../components/UI Elements/Tabs';
+import Analytics from './Analytics';
 import Participant from './Participant';
 import Topic from './Topic';
 
@@ -24,6 +25,9 @@ const ClassPage = () => {
                 )}
                 {selectedComponent === 1 && (
                     <Participant />
+                )}
+                {selectedComponent === 2 && (
+                    <Analytics />
                 )}
             </section>
         </>

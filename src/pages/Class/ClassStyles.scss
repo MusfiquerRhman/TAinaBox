@@ -15,13 +15,17 @@
         .topic__topics--list {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: flex-start;
         }
 
         .related__section {
             display: flex;
             flex-direction: row;
             margin-top: 2rem;
+        }
+
+        .analytics__control {
+            @include flex__center__row;
         }
     }
 }

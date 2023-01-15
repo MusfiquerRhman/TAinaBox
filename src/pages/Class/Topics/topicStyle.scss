@@ -3,6 +3,8 @@
     box-shadow: 2px 2px 5px var(--color-shadow);
     flex: 1;
     border-radius: var(--border-radius);
+    height: fit-content;
+    max-width: 33%;
 
     &:not(:last-child) {
         margin-right: 1rem;
@@ -75,32 +77,7 @@
             background-color: var(--color-green--very-light);
         }
     }
-
-    .sort__container {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 100%;
-        padding: 0 1rem;
-
-        .sort__button {
-            @include flex__center__row;
-            padding: 0.5rem 1rem;
-            flex: 1;
-            background: transparent;
-
-            .sort__label {
-                font-family: var(--font-bold);
-                font-size: 1.25rem;
-            }
-
-            .sort__button-icons {
-                margin-left: 0.5rem;
-            }
-        }
-    }
 }
-
 
 .chat__heading {
     margin: 0.5rem 1rem;

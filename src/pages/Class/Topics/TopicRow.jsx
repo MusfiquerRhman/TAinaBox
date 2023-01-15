@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const TopicRow = React.memo(props => {
     const {info, details, timeFrame, read, handleClickSelected, selected} = props;
-    const [isSelected, setIsSelected] = useState(false)
+    const [isSelected, setIsSelected] = useState(false);
 
     const handleClick = () => {
         setIsSelected(currentState => !currentState);

@@ -1,17 +1,32 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { QueryContext } from '../../contexts/QueryContext';
+import { TopicContext } from '../../contexts/TopicContext';
 import AnalyticsCards from "./AnalyticsCards";
-import QueryBox from './Topics and Queries/QueryBox';
-import Questions from './Topics and Queries/Questions';
-import RelatedTopics from './Topics and Queries/ReletedTopics';
-import TopicBox from './Topics and Queries/TopicBox';
+import QueryBox from './Queries/QueryBox';
+import Questions from './Questions/Questions';
+import RelatedTopics from './Topics/RelatedTopics';
+import TopicBox from './Topics/TopicBox';
 
-const Topic = React.memo(props => {
-    const [selected, setSelected] = useState('');
-
-    const handleClickSelected = useCallback((id) => {
-        setSelected(id);
-    }, []);
+const Topic = React.memo(() => {
+    const [selectedRelatedTopic, setSelectedRelatedTopic] = useState('');
+    const [selectRelatedQuery, setSelectRelatedQuery] = useState('');
+    const { topicState } = useContext(TopicContext);
+    const { queryState } = useContext(QueryContext);
     
+
+    const handleClickSelectedRelatedTopic = useCallback((id) => {
+        setSelectedRelatedTopic(id);
+    }, []);
+
+    const handleClickSelectedRelatedQuery = useCallback((id) => {
+        setSelectRelatedQuery(id);
+    }, []);
+
+    useEffect(() => {
+        console.log(topicState.selectedTopic.length)
+    }, [topicState])
+
+
     return (
         <section className='topic__container'>
             <h1 className='title-secondary'>Topics</h1>
@@ -19,23 +34,31 @@ const Topic = React.memo(props => {
             <div className='topic__topics'>
                 <div className='topic__topics--list'>
                     <TopicBox />
-                    <QueryBox />
-                    <Questions />
+                    {
+                        topicState.selectedTopic.length > 0 && (
+                            <QueryBox />
+                        )
+                    }
+                    {
+                        queryState.selectedQuery.length > 0 && (
+                            <Questions />
+                        )
+                    }
                 </div>
             </div>
             <div className='related__section'>
                 <div className="topic__section">
                     <h2 className='title-tertiary margin-left'>Related Topics</h2>
                     <RelatedTopics 
-                        handleClickSelected={handleClickSelected} 
-                        selected={selected}
+                        handleClickSelected={handleClickSelectedRelatedTopic} 
+                        selected={selectedRelatedTopic}
                     />
                 </div>
                 <div className="topic__section">
                     <h2 className='title-tertiary margin-left'>Related Queries</h2>
                     <RelatedTopics 
-                        handleClickSelected={handleClickSelected} 
-                        selected={selected}
+                        handleClickSelected={handleClickSelectedRelatedQuery} 
+                        selected={selectRelatedQuery}
                     />
                 </div>
             </div>
