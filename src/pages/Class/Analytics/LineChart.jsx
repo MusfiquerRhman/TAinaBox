@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import {
     CategoryScale,
     Chart as ChartJS,
@@ -26,37 +25,23 @@ export const options = {
     responsive: true,
     plugins: {
         legend: {
-            position: 'top',
+            display: false
         },
         title: {
-            display: true,
-            text: 'Questions Asked',
+            display: false,
         },
     },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
-
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: 'Positive',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-            borderColor: 'rgb(53, 162, 235)',
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        },
-        {
-            label: 'Negative',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
-    ],
-};
-
-const LineChart = () => {
-    return <Line options={options} data={data} />;
-}
+const LineChart = React.memo((props) => {
+    const { data } = props;
+    return (
+        <Line options={options}
+            data={data}
+            height={6}
+            width={40}
+        />
+    );
+})
 
 export default LineChart;

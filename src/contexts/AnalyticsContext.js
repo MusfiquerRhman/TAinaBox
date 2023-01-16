@@ -1,11 +1,21 @@
 import { createContext, useReducer } from "react";
 
 let date = new Date();
-let yesterday = new Date(date.setDate(date.getDate() - 1)).toISOString().split("T")[0];
 let today = date.toISOString().split("T")[0];
+let yesterday = new Date(date.setDate(date.getDate() - 1)).toISOString().split("T")[0];
+
+export const ACTION_TYPE = {
+    ADD_QUESTIONS_DATA: 'ADD_QUESTIONS_DATA',
+    ADD_SATISFACTION_DATA: 'ADD_SATISFACTION_DATA',
+    ADD_DEMOGRAPHIC_DATA: 'ADD_DEMOGRAPHIC_DATA',
+    SELECT_DATA_GROUP: 'SELECT_DATA_GROUP',
+    SET_START_DATE: 'SET_START_DATE',
+    SET_END_DATE: 'SET_END_DATE',
+}
 
 const INITIAL_STATE = {
-    selectMethod: 1,
+    today: today,
+    selectMethod: 0,
     startDate: yesterday,
     endDate: today,
     questionsDataset: {
@@ -13,33 +23,59 @@ const INITIAL_STATE = {
         data:[350, 156, 137, 216, 123, 975, 654, 235, 845, 632, 265, 156],   
     },
     satisfaction: {
-        datasets_1: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
-            data: [654, 235, 845, 632, 265, 156, 350, 156, 137, 216, 123, 975]
-        },
-        dataset_2: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
-            data: [632, 265, 156, 654, 137, 216, 123, 235, 845, 350, 156, 975]
-        }
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
+        dataset_1: [654, 235, 845, 632, 265, 156, 350, 156, 137, 216, 123, 975],
+        dataset_2: [632, 265, 156, 654, 137, 216, 123, 235, 845, 350, 156, 975],
+    },
+    demographicData: {
+        labels: ['Age 18-25', 'Age 26-40', "Age 41-65", "Age 65+"],
+        data: [63, 21, 47, 12]
     }
-}
-
-export const ACTION_TYPE = {
-    ADD_QUESTIONS_DATA: 'ADD_QUESTIONS_DATA',
-    ADD_SATISFACTION_DATA: 'ADD_SATISFACTION_DATA'
 }
 
 export const AnalyticsReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
+        case ACTION_TYPE.SELECT_DATA_GROUP:
+            return {
+                ...state, selectMethod: action.payload.value
+            }
+
+        case ACTION_TYPE.SET_START_DATE:
+            return {
+                ...state, startDate: action.payload.value
+            }
+
+        case ACTION_TYPE.SET_END_DATE:
+            return {
+                ...state, endDate: action.payload.data
+            }
+
         case ACTION_TYPE.ADD_QUESTIONS_DATA:
             return {
-                ...state, selectedParticipant: action.payload.value
+                ...state,
+                questionsDataset: {
+                    labels: action.payload.label, 
+                    data: action.payload.data
+                }
             }
 
         case ACTION_TYPE.ADD_SATISFACTION_DATA:
             return {
                 ...state,
-                [action.payload.name]: [...action.payload.value]
+                satisfaction: {
+                    labels: action.payload.labels,
+                    dataset_1: action.payload.dataset_1.data,
+                    dataset_2: action.payload.dataset_2.data
+                }
+            }
+
+        case ACTION_TYPE.ADD_DEMOGRAPHIC_DATA: 
+            return {
+                ...state,
+                demographicData: {
+                    label: action.payload.labels,
+                    data: action.payload.data
+                }
             }
 
         default:

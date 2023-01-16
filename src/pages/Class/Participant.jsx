@@ -28,7 +28,7 @@ const Participant = React.memo(() => {
                     )
                 }
                 {
-                    queryState.selectedQuery.length > 0 && (
+                    participantState.selectedParticipant.length > 0 && queryState.selectedQuery.length > 0 && (
                         <Questions />
                     )
                 }

@@ -54,6 +54,8 @@
     display: flex;
     flex-direction: row;
     box-shadow: 2px 2px 5px var(--color-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
 
     .tab__button {
         flex: 1;
@@ -78,7 +80,6 @@
 .analytic__card {
     @include flex__center__column;
     background: var(--color-white);
-    // max-width: 250px;
     width: 25%;
     border-radius: var(--border-radius);
     box-shadow: 2px 2px 5px var(--color-shadow);
@@ -184,5 +185,25 @@
         background-position-y: 45%;
         font-size: 1.15rem;
 
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .sort__container {
+        padding: 0 0.25rem;
+    
+        .sort__button {
+            padding: 0.5rem;
+
+            .sort__label {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@-moz-document url-prefix() {
+    .analytics__input--container .analytics__input--date{
+        padding: 1rem;
     }
 }

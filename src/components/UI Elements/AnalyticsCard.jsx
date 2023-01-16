@@ -5,10 +5,13 @@ const numberWithCommas = (x) => {
 }
 
 const AnalyticsCard = React.memo(props => {
-    const {value, text} = props;
+    const {value, text, percent, ratio} = props;
     return (
         <div className="analytic__card">
-            <p className="analytic__card-value">{numberWithCommas(value)}</p>
+            <p className="analytic__card-value">
+                {ratio === true ? value :numberWithCommas(value) }
+                {percent === true && '%'}
+            </p>
             <p className="analytic__card-text">{text}</p>
         </div>
     )

@@ -1,5 +1,5 @@
 .sidebar__container {
-    background: var(--color-green--dark);
+    background: var(--color-green);
     background-image: url('../../assets/Patterns/Icon\ Pattern\ Final/Icon Background-dkgreen.jpg');
     background-position: center; 
     background-repeat: no-repeat; 
@@ -78,5 +78,40 @@
                 color: var(--color-text);
             }
         }
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .sidebar__container {
+        min-width: 130px;
+
+        .sidebar__title-box {
+            padding: 1rem 0 1rem 0;
+
+            .sidebar__title {
+                font-family: var(--font-bold);
+                font-size: 1rem;
+                letter-spacing: 2px;
+
+            }
+        }
+        .sidebar__links {
+            .sidebar__link {
+                color: var(--color-white);
+                font-size: 1rem;
+                padding: 0.75rem 0.25rem 0.75rem 1rem;
+    
+                .sidebar__link--text {
+                    padding: 0.25rem;
+                }
+            }
+        }
+    }
+}
+
+@-moz-document url-prefix() {
+    .sidebar__container {
+        background: var(--color-green);
+        background-image: none;
     }
 }

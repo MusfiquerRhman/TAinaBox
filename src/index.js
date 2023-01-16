@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { AnalyticsProvider } from "./contexts/AnalyticsContext";
 import { ParticipantProvider } from "./contexts/ParticipantsContext";
 import { QueryProvider } from "./contexts/QueryContext";
 import { TopicProvider } from "./contexts/TopicContext";
@@ -12,7 +13,9 @@ root.render(
     <TopicProvider>
       <QueryProvider>
         <ParticipantProvider>
-          <App />
+          <AnalyticsProvider>
+            <App />
+          </AnalyticsProvider>
         </ParticipantProvider>
       </QueryProvider>
     </TopicProvider>
