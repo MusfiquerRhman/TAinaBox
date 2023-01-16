@@ -6,17 +6,17 @@ import TopicList from "./TopicList";
 
 const TopicBox = React.memo(() => {
     const [selected, setSelected] = useState('');
-    const {dispatch, ACTION_TYPE} = useContext(TopicContext);
+    const {topicDispatch, topicActionType} = useContext(TopicContext);
     
     const handleClickSelected = useCallback((id) => {
         setSelected(id);
-        dispatch({
-            type: ACTION_TYPE.SELECT_TOPIC,
+        topicDispatch({
+            type: topicActionType.SELECT_TOPIC,
             payload: {
                 value: id
             }
         })
-    }, [ACTION_TYPE.SELECT_TOPIC, dispatch])
+    }, [topicActionType.SELECT_TOPIC, topicDispatch])
 
     return (
         <div className="topic__section">

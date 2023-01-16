@@ -21,19 +21,17 @@ const Participant = React.memo(() => {
             <h1 className='title-secondary'>Students and  Faculty list</h1>
             <AnalyticsCards />
             <div className='topic__topics'>
-                <div className='topic__topics--list'>
-                    <ParticipantsBox />
-                    {
-                        participantState.selectedParticipant.length > 0 && (
-                            <QueryBox />
-                        )
-                    }
-                    {
-                        queryState.selectedQuery.length > 0 && (
-                            <Questions />
-                        )
-                    }
-                </div>
+                <ParticipantsBox />
+                {
+                    participantState.selectedParticipant.length > 0 && (
+                        <QueryBox />
+                    )
+                }
+                {
+                    queryState.selectedQuery.length > 0 && (
+                        <Questions />
+                    )
+                }
             </div>
             <div className='related__section'>
                 <div className="topic__section">

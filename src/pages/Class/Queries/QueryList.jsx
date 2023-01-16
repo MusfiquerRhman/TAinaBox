@@ -1,23 +1,17 @@
 import React, { useContext } from 'react';
 import { QueryContext } from '../../../contexts/QueryContext';
-import { descendingComparator } from '../../helperFunctions';
+import { compare } from '../../helperFunctions';
 import QueryRow from './QueryRow';
 
 function getComparator(sortFeedBack, sortTime, sortQuery, orderBy) {
     if (orderBy === 'query') {
-        return sortQuery === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortQuery, orderBy);
     }
     else if (orderBy === 'timeFrame') {
-        return sortTime === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortTime, orderBy);
     }
     else {
-        return sortFeedBack === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortFeedBack, orderBy);
     }
 }
 
@@ -28,9 +22,13 @@ const QueryList = React.memo(props => {
     return (
         <div className='topic__column'>
             {
-                queryState.queryData.slice()
-                    .sort(getComparator(queryState.sortFeedBack, queryState.sortQueryTime, queryState.sortQuery, queryState.orderByQuery))
-                    .map((item, index) => (
+                queryState.queryData
+                    .sort(getComparator(
+                        queryState.sortFeedBack, 
+                        queryState.sortQueryTime, 
+                        queryState.sortQuery, 
+                        queryState.orderByQuery
+                    )).map((item, index) => (
                         <QueryRow
                             key={index}
                             query={item.query}

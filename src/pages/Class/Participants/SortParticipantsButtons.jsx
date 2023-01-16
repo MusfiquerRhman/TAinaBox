@@ -3,28 +3,26 @@ import SortButton from '../../../components/UI Elements/SortButton';
 import { ParticipantContext } from '../../../contexts/ParticipantsContext';
 
 const SortParticipantsButtons = React.memo(() => {
-    const { participantState, dispatch, ACTION_TYPE } = useContext(ParticipantContext);
+    const { participantState, participantDispatch, participantActionType } = useContext(ParticipantContext);
 
     const handleClickParticipants = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        participantDispatch({
+            type: participantActionType.SORT_ORDER,
             payload: {
                 name: 'sortParticipant',
-                orderBy: 'orderByParticipant',
-                order: 'name'
+                orderBy: 'name'
             }
         })
     };
 
     const handleClickParticipantsTime = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        participantDispatch({
+            type: participantActionType.SORT_ORDER,
             payload: {
                 name: 'sortParticipantTime',
-                orderBy: 'orderByParticipant',
-                order: 'timeFrame'
+                orderBy: 'timeFrame'
             }
         })
     };

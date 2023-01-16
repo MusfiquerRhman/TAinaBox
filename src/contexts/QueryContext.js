@@ -53,7 +53,7 @@ export const QueryReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 [action.payload.name]: !state[action.payload.name],
-                [action.payload.orderBy]: action.payload.order
+                orderByQuery: action.payload.orderBy
             }
         
         default:
@@ -68,7 +68,9 @@ export const QueryProvider = (props) => {
     return (
         <QueryContext.Provider
             value={{
-                queryState: state, dispatch, ACTION_TYPE
+                queryState: state, 
+                queryDispatch: dispatch, 
+                queryActionType: ACTION_TYPE
             }}
         >
         {props.children}

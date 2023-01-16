@@ -6,17 +6,17 @@ import SortQueriesButtons from "./SortQueriesButtons";
 
 const QueryBox = React.memo(() => {
     const [selected, setSelected] = useState('');
-    const { dispatch, ACTION_TYPE } = useContext(QueryContext);
+    const { queryDispatch, queryActionType } = useContext(QueryContext);
 
     const handleClickSelected = useCallback((id) => {
         setSelected(id);
-        dispatch({
-            type: ACTION_TYPE.SELECT_QUERY,
+        queryDispatch({
+            type: queryActionType.SELECT_QUERY,
             payload: {
                 value: id
             }
         })
-    }, [ACTION_TYPE.SELECT_QUERY, dispatch]);
+    }, [queryActionType.SELECT_QUERY, queryDispatch]);
 
     return (
         <div className="topic__section">

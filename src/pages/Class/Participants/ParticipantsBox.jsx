@@ -6,50 +6,22 @@ import SortParticipantsButtons from "./SortParticipantsButtons";
 
 const ParticipantsBox = React.memo(() => {
     const [selected, setSelected] = useState('');
-    const { participantState, dispatch, ACTION_TYPE } = useContext(ParticipantContext);
+    const { participantDispatch, participantActionType } = useContext(ParticipantContext);
 
     const handleClickSelected = useCallback((id) => {
         setSelected(id);
-        dispatch({
-            type: ACTION_TYPE.SELECT_PARTICIPANT,
+        participantDispatch({
+            type: participantActionType.SELECT_PARTICIPANT,
             payload: {
                 value: id
             }
         })
-    }, [ACTION_TYPE.SELECT_PARTICIPANT, dispatch]);
-
-    const handleClickTopic = (e) => {
-        e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
-            payload: {
-                name: 'sortParticipant',
-                orderBy: 'orderByParticipant',
-                order: 'name'
-            }
-        })
-    };
-
-    const handleClickTime = (e) => {
-        e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
-            payload: {
-                name: 'sortQueryTime',
-                orderBy: 'orderByQuery',
-                order: 'timeFrame'
-            }
-        })
-    };
+    }, [participantActionType.SELECT_PARTICIPANT, participantDispatch]);
 
     return (
         <div className="topic__section">
             <SearchBox text='Participants' />
-            <SortParticipantsButtons 
-                handleClickTopic={handleClickTopic}
-                handleClickTime={handleClickTime}
-                state={participantState}
-            />
+            <SortParticipantsButtons />
             <ParticipantsList
                 handleClickSelected={handleClickSelected}
                 selected={selected}

@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { TopicContext } from '../../../contexts/TopicContext';
-import { descendingComparator } from '../../helperFunctions';
+import { compare } from '../../helperFunctions';
 import TopicRow from './TopicRow';
 
 export function getComparator(sortTopic, sortTime, orderBy) {
     if (orderBy === 'name') {
-        return sortTopic === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortTopic, orderBy);
     }
     else {
-        return sortTime === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortTime, orderBy);
     }
 }
 
@@ -24,8 +20,11 @@ const TopicList = React.memo(props => {
         <div className='topic__column'>
             {
                 topicState.topicData
-                    .sort(getComparator(topicState.sortTopic, topicState.sortTopicTime, topicState.orderByTopic))
-                    .map((item, index) => (
+                    .sort(getComparator(
+                        topicState.sortTopic, 
+                        topicState.sortTopicTime, 
+                        topicState.orderByTopic
+                    )).map((item, index) => (
                         <TopicRow
                             key={index}
                             info={item.name}

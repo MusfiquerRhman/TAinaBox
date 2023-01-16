@@ -12,7 +12,7 @@ const Topic = React.memo(() => {
     const [selectRelatedQuery, setSelectRelatedQuery] = useState('');
     const { topicState } = useContext(TopicContext);
     const { queryState } = useContext(QueryContext);
-    
+
 
     const handleClickSelectedRelatedTopic = useCallback((id) => {
         setSelectedRelatedTopic(id);
@@ -32,32 +32,30 @@ const Topic = React.memo(() => {
             <h1 className='title-secondary'>Topics</h1>
             <AnalyticsCards />
             <div className='topic__topics'>
-                <div className='topic__topics--list'>
-                    <TopicBox />
-                    {
-                        topicState.selectedTopic.length > 0 && (
-                            <QueryBox />
-                        )
-                    }
-                    {
-                        queryState.selectedQuery.length > 0 && (
-                            <Questions />
-                        )
-                    }
-                </div>
+                <TopicBox />
+                {
+                    topicState.selectedTopic.length > 0 && (
+                        <QueryBox />
+                    )
+                }
+                {
+                    queryState.selectedQuery.length > 0 && (
+                        <Questions />
+                    )
+                }
             </div>
             <div className='related__section'>
                 <div className="topic__section">
                     <h2 className='title-tertiary margin-left'>Related Topics</h2>
-                    <RelatedTopics 
-                        handleClickSelected={handleClickSelectedRelatedTopic} 
+                    <RelatedTopics
+                        handleClickSelected={handleClickSelectedRelatedTopic}
                         selected={selectedRelatedTopic}
                     />
                 </div>
                 <div className="topic__section">
                     <h2 className='title-tertiary margin-left'>Related Queries</h2>
-                    <RelatedTopics 
-                        handleClickSelected={handleClickSelectedRelatedQuery} 
+                    <RelatedTopics
+                        handleClickSelected={handleClickSelectedRelatedQuery}
                         selected={selectRelatedQuery}
                     />
                 </div>

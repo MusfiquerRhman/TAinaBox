@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { ParticipantContext } from '../../../contexts/ParticipantsContext';
-import { descendingComparator } from '../../helperFunctions';
+import { compare } from '../../helperFunctions';
 import TopicRow from '../Topics/TopicRow';
 
 export function getComparator(sortParticipant, sortParticipantTime, orderBy) {
     if (orderBy === 'name') {
-        return sortParticipant === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortParticipant, orderBy);
     }
     else {
-        return sortParticipantTime === true
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
+        return compare(sortParticipantTime, orderBy);
     }
 }
 
@@ -24,8 +20,11 @@ const ParticipantsList = React.memo((props) => {
         <div className='topic__column'>
             {
                 participantState.participantData
-                    .sort(getComparator(participantState.sortParticipant, participantState.sortParticipantTime, participantState.orderByParticipant))
-                    .map((item, index) => (
+                    .sort(getComparator(
+                        participantState.sortParticipant, 
+                        participantState.sortParticipantTime, 
+                        participantState.orderByParticipant
+                    )).map((item, index) => (
                         <TopicRow
                             key={index}
                             info={item.name}

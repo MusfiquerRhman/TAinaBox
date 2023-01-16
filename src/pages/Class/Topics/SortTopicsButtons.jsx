@@ -3,28 +3,26 @@ import SortButton from '../../../components/UI Elements/SortButton';
 import { TopicContext } from '../../../contexts/TopicContext';
 
 const SortTopicsButtons = React.memo(() => {
-    const { topicState, dispatch, ACTION_TYPE } = useContext(TopicContext);
+    const { topicState, topicDispatch, topicActionType } = useContext(TopicContext);
 
     const handleClickTopic = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        topicDispatch({
+            type: topicActionType.SORT_ORDER,
             payload: {
                 name: 'sortTopic',
-                orderBy: 'orderByTopic',
-                order: 'name'
+                orderBy: 'name'
             }
         })
     };
 
     const handleClickTime = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        topicDispatch({
+            type: topicActionType.SORT_ORDER,
             payload: {
                 name: 'sortTopicTime',
-                orderBy: 'orderByTopic',
-                order: 'timeFrame'
+                orderBy: 'timeFrame'
             }
         })
     };

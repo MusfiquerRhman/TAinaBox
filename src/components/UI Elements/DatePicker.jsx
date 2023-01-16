@@ -1,15 +1,14 @@
 import React from 'react';
 
 const DatePicker = React.memo(props => {
-    const {name, min, max, value, onChange} = props;
     return (
-        <input type="date" 
-            name={name}
-            value={value}
-            min={min} 
-            max={max} 
-            onChange={onChange}
-        />
+        <div className='analytics__input--container'>
+            <label htmlFor='date'>{props.name}</label>
+            <input id='date' className='analytics__input--date'
+                type="date" 
+                {...props}
+            />
+        </div>
     )
 })
 

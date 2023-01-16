@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from '../../components/UI Elements/DatePicker';
 import DropDown from '../../components/UI Elements/DropDown';
+import Filers from './Analytics/Filters';
 import LineChart from './Analytics/LineChart';
 
 const Analytics = () => {
@@ -30,27 +31,7 @@ const Analytics = () => {
 
     return (
         <section className='topic__container'>
-            <div className='analytics__control'>
-                <DropDown 
-                    title={'Data Group'} 
-                    selectMethod={selectMethod} 
-                    handleChange={handleChange} 
-                />
-                <DatePicker
-                    name={'Start Date'}
-                    min={'2000-01-01'}
-                    max={today}
-                    value={startDate}
-                    onChange={handleChangeStartDate}
-                />                
-                <DatePicker
-                    name={'End Date'}
-                    min={'2000-01-01'}
-                    max={yesterDay}
-                    value={endDate}
-                    onChange={handleChangeEndDate}
-                />
-            </div>
+            <Filers />
             {/* <LineChart /> */}
         </section>
     )

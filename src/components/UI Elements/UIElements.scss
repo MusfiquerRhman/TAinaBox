@@ -143,3 +143,46 @@
         }
     }
 }
+
+.analytics__input--container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+
+    &:not(:last-child){
+        margin-right: 1rem;
+    }
+
+    .analytics__input--date, .analytics__input--dropdown {
+        width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: 2px 2px 5px var(--color-shadow);
+    }
+
+    .analytics__input--date {
+        padding-left: 1rem;
+        font-size: 1.15rem;
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            background-color: var(--color-green-inverse);
+            font-size: 1.15rem;
+            padding: 1rem;
+        }
+    }
+
+    .analytics__input--dropdown {
+        padding: 1rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-position-x: 98%;
+        background-position-y: 45%;
+        font-size: 1.15rem;
+
+    }
+}

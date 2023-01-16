@@ -7,10 +7,10 @@ const SortButton = React.memo((props) => {
     const {name, state, handleClick} = props;
 
     let Icon;
-    if(state === true) {
+    if(state === false) {
         Icon = <KeyboardArrowUpIcon />
     }
-    else if(state === false) {
+    else if(state === true) {
         Icon = <KeyboardArrowDownIcon />
     } 
     else {

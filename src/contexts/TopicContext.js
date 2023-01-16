@@ -52,7 +52,7 @@ export const TopicReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 [action.payload.name]: !state[action.payload.name],
-                [action.payload.orderBy]: action.payload.order
+                orderByTopic: action.payload.orderBy
             }
         
         default:
@@ -67,7 +67,9 @@ export const TopicProvider = (props) => {
     return (
         <TopicContext.Provider
             value={{
-                topicState: state, dispatch, ACTION_TYPE
+                topicState: state, 
+                topicDispatch: dispatch, 
+                topicActionType: ACTION_TYPE
             }}
         >
         {props.children}

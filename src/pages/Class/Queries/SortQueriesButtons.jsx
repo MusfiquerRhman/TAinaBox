@@ -3,47 +3,44 @@ import SortButton from '../../../components/UI Elements/SortButton';
 import { QueryContext } from "../../../contexts/QueryContext";
 
 const SortQueriesButtons = React.memo(() => {
-    const { queryState, dispatch, ACTION_TYPE } = useContext(QueryContext);
+    const { queryState, queryDispatch, queryActionType } = useContext(QueryContext);
 
     const handleClickFeedBack = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        queryDispatch({
+            type: queryActionType.SORT_ORDER,
             payload: {
                 name: 'sortFeedBack',
-                orderBy: 'orderByQuery',
-                order: 'feedBack'
+                orderBy: 'feedBack'
             }
         })
     };
 
     const handleClickTime = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        queryDispatch({
+            type: queryActionType.SORT_ORDER,
             payload: {
                 name: 'sortQueryTime',
-                orderBy: 'orderByQuery',
-                order: 'timeFrame'
+                orderBy: 'timeFrame'
             }
         })
     };
 
     const handleClickQuery = (e) => {
         e.preventDefault();
-        dispatch({
-            type: ACTION_TYPE.SORT_ORDER,
+        queryDispatch({
+            type: queryActionType.SORT_ORDER,
             payload: {
                 name: 'sortQuery',
-                orderBy: 'orderByQuery',
-                order: 'query'
+                orderBy: 'query'
             }
         })
     };
 
     let buttons = [
         {name: 'Feedback', state: queryState.sortFeedBack, handleClick: handleClickFeedBack},
-        {name: 'Query', state: queryState.sortQueryTime, handleClick: handleClickQuery},
+        {name: 'Query', state: queryState.sortQuery, handleClick: handleClickQuery},
         {name: 'Time', state: queryState.sortQueryTime, handleClick: handleClickTime},
     ]
 

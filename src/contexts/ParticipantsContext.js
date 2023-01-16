@@ -52,7 +52,7 @@ export const ParticipantReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 [action.payload.name]: !state[action.payload.name],
-                [action.payload.orderBy]: action.payload.order
+                orderByParticipant: action.payload.orderBy
             }
         
         default:
@@ -67,7 +67,9 @@ export const ParticipantProvider = (props) => {
     return (
         <ParticipantContext.Provider
             value={{
-                participantState: state, dispatch, ACTION_TYPE
+                participantState: state, 
+                participantDispatch: dispatch, 
+                participantActionType : ACTION_TYPE
             }}
         >
             {props.children}
