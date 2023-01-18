@@ -39,7 +39,7 @@ const Topic = React.memo(() => {
                     )
                 }
                 {
-                    queryState.selectedQuery.length > 0 && (
+                    topicState.selectedTopic.length > 0 && queryState.selectedQuery.length > 0 && (
                         <Questions />
                     )
                 }

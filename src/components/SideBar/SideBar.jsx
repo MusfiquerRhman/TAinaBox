@@ -1,4 +1,3 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ClassIcon from '@mui/icons-material/Class';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import GroupIcon from '@mui/icons-material/Group';
@@ -12,7 +11,6 @@ const CustomNavLinks = ({text, link, Icon}) => (
         <span className='sidebar__link--text'>{text}</span>
     </NavLink>
 )
-
 
 const SideBar = React.memo((props) => {
     return (
@@ -28,7 +26,6 @@ const SideBar = React.memo((props) => {
                     <CustomNavLinks Icon={ClassIcon} link='/' text="Class"/>
                     <CustomNavLinks Icon={GroupIcon} link='/user' text="User"/>
                     <CustomNavLinks Icon={FeedbackIcon} link='/feedback' text="Feedback"/>
-                    <CustomNavLinks Icon={AccountCircleIcon} link='/profile' text="Profile"/>
                 </div>
             </div>
 

@@ -28,8 +28,8 @@ const INITIAL_STATE = {
         dataset_2: [632, 265, 156, 654, 137, 216, 123, 235, 845, 350, 156, 975],
     },
     demographicData: {
-        labels: ['Age 18-25', 'Age 26-40', "Age 41-65", "Age 65+"],
-        data: [63, 21, 47, 12]
+        labels: ['Age 10-17' ,'Age 18-25', 'Age 26-40', "Age 41-65", "Age 65+"],
+        data: [35, 63, 21, 47, 12]
     }
 }
 

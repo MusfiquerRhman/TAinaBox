@@ -3,9 +3,30 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import SideBar from "./components/SideBar/SideBar";
-import { ClassPage, ForgotPassword, LoginPage } from "./pages";
+import {
+  AnalyticsProvider,
+  ParticipantProvider,
+  ProfileProvider,
+  QueryProvider,
+  TopicProvider,
+} from "./contexts";
+import { ClassPage, ForgotPassword, LoginPage, Profile } from "./pages";
 
-function App() {
+const Providers = (props) => {
+  return (
+    <TopicProvider>
+      <QueryProvider>
+        <ParticipantProvider>
+          <AnalyticsProvider>
+            <ProfileProvider>{props.children}</ProfileProvider>
+          </AnalyticsProvider>
+        </ParticipantProvider>
+      </QueryProvider>
+    </TopicProvider>
+  );
+};
+
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
@@ -18,10 +39,13 @@ function App() {
           </Routes>
         ) : (
           <SideBar>
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<ClassPage />} />
-            </Routes>
+            <Providers>
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<ClassPage />} />
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+            </Providers>
           </SideBar>
         )}
       </SnackbarProvider>

@@ -131,14 +131,14 @@
                 flex: 1;
                 background: var(--color-white);
                 height: fit-content;
-                padding: 1rem;
+                padding: 1rem 1rem 0.5rem 1rem;
                 border-radius: var(--border-radius);
                 box-shadow: 2px 2px 5px var(--color-shadow);
             }
 
             .demographic__cards {
                 border-radius: var(--border-radius);
-                flex: 2;
+                flex: 3;
                 margin-left: 1rem;
                 display: flex;
                 flex-direction: column;
@@ -147,11 +147,11 @@
                 .analytics__cards {
 
                     &:not(:last-child) {
-                        margin-bottom: 0.85rem;
+                        margin-bottom: 1rem;
                     }
 
                     .analytic__card {
-                        min-height: 10rem;
+                        min-height: 9rem;
                         text-align: center;
                     }
                 }
