@@ -1,0 +1,84 @@
+.popup__container {
+    width: 28rem;
+    background: var(--color-white);
+    box-shadow: 2px 2px 5px var(--color-shadow);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+
+    .schedule__container {
+        padding-bottom: 1rem;
+
+        .popup__helper{
+            text-align: center;
+            font-family: var(--font-semibold);
+        }
+    }
+
+    .popup__days {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+
+        .popup__days-button {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 50%;
+            background: var(--color-gray--light);
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-right: 0.75rem;
+            }
+        }
+
+        .active__button {
+            background-color: var(--color-green--dark);
+            color: var(--color-white)
+        }
+    }
+
+    .popup__input-container {
+        width: 100%;
+        margin: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+
+        .popup__input {
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 2px solid var(--color-green--medium);
+        }
+    }
+
+    .round__button{
+        padding: 0.5rem;
+        background: var(--color-green);
+        color: var(--color-white);
+        border-radius: 50%;
+        margin: 1rem;
+        width: fit-content;
+
+
+        .round__button-icon {
+            font-size: 3rem;
+        }
+    }
+
+    .popup__button-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .popup__button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+
+}
