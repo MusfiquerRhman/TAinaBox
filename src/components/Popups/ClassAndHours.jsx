@@ -1,10 +1,7 @@
 import AddIcon from '@mui/icons-material/Add';
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react';
+import TimePicker from '../UI Elements/TimePicker';
 
 const initialState = {
     days: new Array(7).fill(false),
@@ -13,7 +10,8 @@ const initialState = {
     name: ''
 }
 
-const ClassAndHours = React.memo(() => {
+const ClassAndHours = React.memo((props) => {
+    const {handleClose} = props;
     const { enqueueSnackbar } = useSnackbar();
     const [numberOfSets, setNumberOfSets] = useState(1);
     const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -26,6 +24,7 @@ const ClassAndHours = React.memo(() => {
             newSchedule[i].days[index] = !newSchedule[i].days[index];
             return newSchedule;
         })
+        console.log(index, i)
     }
 
     const addMoreSection = () => {
@@ -87,7 +86,7 @@ const ClassAndHours = React.memo(() => {
             <h1 className='title-secondary'>Class and Hours</h1>
             <p className='popup__helper'>Please input class location and hours</p>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form__container'>
                 {[...Array(numberOfSets)].map((_, i) => (
                     <div className='schedule__container' key={i}>
                         <p className='popup__helper'>Schedule: {i + 1}</p>
@@ -101,55 +100,43 @@ const ClassAndHours = React.memo(() => {
                                 </button>
                             ))}
                         </div>
-
                         <div className='popup__input-container'>
                             <p>Start Time</p>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DesktopTimePicker
-                                    value={schedules[i].startTime}
-                                    onChange={(newValue) => {
-                                        changeStartTime(newValue, i);
-                                    }}
-                                    renderInput={(params) =>
-                                        <TextField {...params}
-                                            variant='standard'
-                                            fullWidth
-                                            required
-                                            sx={{ borderBottom: '2px solid var(--color-green--medium)' }}
-                                        />}
-                                />
-                            </LocalizationProvider>
+                            <TimePicker i={i}
+                                time={schedules[i].startTime} 
+                                handleChange={changeStartTime} 
+                            />
                         </div>
                         <div className='popup__input-container'>
                             <p>End Time</p>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DesktopTimePicker
-                                    value={schedules[i].endTime}
-                                    onChange={(newValue) => {
-                                        changeEndTime(newValue, i);
-                                    }}
-                                    fullWidth
-                                    renderInput={(params) =>
-                                        <TextField {...params}
-                                            variant='standard'
-                                            fullWidth
-                                            required
-                                            sx={{ borderBottom: '2px solid var(--color-green--medium)' }}
-                                        />}
-                                />
-                            </LocalizationProvider>
+                            <TimePicker i={i}
+                                time={schedules[i].endTime} 
+                                handleChange={changeEndTime} 
+                            />
                         </div>
                         <div className='popup__input-container'>
                             <label htmlFor='class'>Class</label>
-                            <input required className='popup__input' type='text' placeholder='Class' id='class' value={schedules[i].name} onChange={(e) => changeName(e, i)} />
+                            <input required 
+                                className='popup__input' 
+                                type='text' 
+                                placeholder='Class' 
+                                id='class' 
+                                value={schedules[i].name} 
+                                onChange={(e) => changeName(e, i)} 
+                            />
                         </div>
                     </div>
                 ))}
-
                 <div className='popup__button-container'>
-                    <button className='round__button' onClick={addMoreSection}><AddIcon className='round__button-icon' /></button>
-                    <button type='submit' className='popup__button bordered__button'>Confirm Schedule</button>
-                    <button className='popup__button bordered__button warning__button'>Nevermind</button>
+                    <button className='round__button' onClick={addMoreSection}>
+                        <AddIcon className='round__button-icon' />
+                    </button>
+                    <button type='submit' className='popup__button bordered__button'>
+                        Confirm Schedule
+                    </button>
+                    <button className='popup__button bordered__button warning__button' onClick={handleClose}>
+                        Nevermind
+                    </button>
                 </div>
             </form>
         </div>

@@ -1,18 +1,43 @@
-.popup__container {
+.popup {
     width: 28rem;
     background: var(--color-white);
     box-shadow: 2px 2px 5px var(--color-shadow);
     border-radius: var(--border-radius);
+
+    .popup__close {
+        padding: 0 2rem 1rem 2rem;
+        width: calc(100% -4rem);
+    }
+}
+
+.popup__container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
+
+    .form__container{
+        padding: 1rem 2rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: fit-content;
+        max-height: 75vh;
+    
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: var(--color-green);
+            border-radius: 10px;
+        }
+    }
 
     .schedule__container {
         padding-bottom: 1rem;
 
-        .popup__helper{
+        .popup__helper {
             text-align: center;
             font-family: var(--font-semibold);
         }
@@ -38,7 +63,7 @@
 
         .active__button {
             background-color: var(--color-green--dark);
-            color: var(--color-white)
+            color: var(--color-white);
         }
     }
 
@@ -55,14 +80,13 @@
         }
     }
 
-    .round__button{
+    .round__button {
         padding: 0.5rem;
         background: var(--color-green);
         color: var(--color-white);
         border-radius: 50%;
         margin: 1rem;
         width: fit-content;
-
 
         .round__button-icon {
             font-size: 3rem;
@@ -80,5 +104,49 @@
             margin-top: 1rem;
         }
     }
-
 }
+
+// .overlay {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     background: rgba(0, 0, 0, 0.7);
+//     transition: opacity 500ms;
+//     visibility: hidden;
+//     opacity: 0;
+// }
+
+// .visible {
+//     visibility: visible;
+//     opacity: 1;
+// }
+
+// .popup {
+//     margin: 70px auto;
+//     padding: 20px;
+//     background: #fff;
+//     border-radius: 5px;
+//     width: 30%;
+//     position: relative;
+//     transition: all 5s ease-in-out;
+// }
+
+// .popup .close {
+//     position: absolute;
+//     top: 20px;
+//     right: 30px;
+//     transition: all 200ms;
+//     font-size: 30px;
+//     font-weight: bold;
+//     text-decoration: none;
+//     color: #333;
+// }
+// .popup .close:hover {
+//     color: #06d85f;
+// }
+// .popup .content {
+//     max-height: 30%;
+//     overflow: auto;
+// }
