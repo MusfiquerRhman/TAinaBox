@@ -8,9 +8,7 @@ export const ACTION_TYPE = {
     ADD_QUESTIONS_DATA: 'ADD_QUESTIONS_DATA',
     ADD_SATISFACTION_DATA: 'ADD_SATISFACTION_DATA',
     ADD_DEMOGRAPHIC_DATA: 'ADD_DEMOGRAPHIC_DATA',
-    SELECT_DATA_GROUP: 'SELECT_DATA_GROUP',
-    SET_START_DATE: 'SET_START_DATE',
-    SET_END_DATE: 'SET_END_DATE',
+    CHANGE_VALUE: 'CHANGE_VALUE',
 }
 
 const INITIAL_STATE = {
@@ -35,19 +33,9 @@ const INITIAL_STATE = {
 
 export const AnalyticsReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case ACTION_TYPE.SELECT_DATA_GROUP:
+        case ACTION_TYPE.CHANGE_VALUE:
             return {
-                ...state, selectMethod: action.payload.value
-            }
-
-        case ACTION_TYPE.SET_START_DATE:
-            return {
-                ...state, startDate: action.payload.value
-            }
-
-        case ACTION_TYPE.SET_END_DATE:
-            return {
-                ...state, endDate: action.payload.data
+                ...state, [action.payload.name]: action.payload.value
             }
 
         case ACTION_TYPE.ADD_QUESTIONS_DATA:

@@ -9,30 +9,13 @@ const Filers = React.memo(() => {
 
     const handleChange = (event) => {
         analyticsDispatch({
-            type: analyticsActionType.SELECT_DATA_GROUP,
+            type: analyticsActionType.CHANGE_VALUE,
             payload: {
-                value: event.target.value
+                value: event.target.value,
+                name: event.target.name
             }
         })
     };
-
-    const handleChangeStartDate = (event) => {
-        analyticsDispatch({
-            type: analyticsActionType.SET_START_DATE,
-            payload: {
-                value: event.target.value
-            }
-        })
-    }
-
-    const handleChangeEndDate = (event) => {
-        analyticsDispatch({
-            type: analyticsActionType.SET_END_DATE,
-            payload: {
-                value: event.target.value
-            }
-        })
-    }
 
     const options = [
         {value: 0, text: 'Per Day'},
@@ -43,24 +26,24 @@ const Filers = React.memo(() => {
     return (
         <div className='analytics__control'>
             <DatePicker
-                name={'Start Date'}
+                name={'startDate'}
                 min={'2000-01-01'}
                 max={analyticsState.today}
                 value={analyticsState.startDate}
-                onChange={handleChangeStartDate}
+                onChange={handleChange}
             />
             <DatePicker
-                name={'End Date'}
+                name={'endDate'}
                 min={'2000-01-01'}
                 max={analyticsState.today}
                 value={analyticsState.endDate}
-                onChange={handleChangeEndDate}
+                onChange={handleChange}
             />
             <DropDown
                 title={'Data Group'}
                 value={analyticsState.selectMethod}
                 onChange={handleChange}
-                name={'Data Group'}
+                name={'selectMethod'}
                 options={options}
             />
         </div>

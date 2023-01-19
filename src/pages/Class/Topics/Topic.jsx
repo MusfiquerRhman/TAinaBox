@@ -22,11 +22,6 @@ const Topic = React.memo(() => {
         setSelectRelatedQuery(id);
     }, []);
 
-    useEffect(() => {
-        console.log(topicState.selectedTopic.length)
-    }, [topicState])
-
-
     return (
         <section className='topic__container'>
             <h1 className='title-secondary'>Topics</h1>
