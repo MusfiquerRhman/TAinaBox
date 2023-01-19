@@ -19,7 +19,15 @@ const TimePicker = React.memo(props => {
                         variant='standard'
                         fullWidth
                         required
-                        sx={{ borderBottom: '2px solid var(--color-green--medium)' }}
+                        InputAdornmentProps={{ position: "start" }}
+                        sx={{ 
+                            borderBottom: '2px solid var(--color-green--medium)',
+                        }}
+                        // sx={{
+                        //     backgroundColor: 'var(--color-green--very-light)',
+                        //     padding: '0.5rem 1rem',
+                        //     borderRadius: 'var(--border-radius)'
+                        // }}
                     />}
             />
         </LocalizationProvider>

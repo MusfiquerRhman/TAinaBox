@@ -34,6 +34,11 @@ const Filers = React.memo(() => {
         })
     }
 
+    const options = [
+        {value: 0, text: 'Per Day'},
+        {value: 1, text: 'Per Month'},
+        {value: 2, text: 'Per Year'},
+    ]
 
     return (
         <div className='analytics__control'>
@@ -56,6 +61,7 @@ const Filers = React.memo(() => {
                 value={analyticsState.selectMethod}
                 onChange={handleChange}
                 name={'Data Group'}
+                options={options}
             />
         </div>
     )

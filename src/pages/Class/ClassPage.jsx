@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Tabs from '../../components/UI Elements/Tabs';
-import Analytics from './Analytics';
-import Participant from './Participant';
-import Topic from './Topic';
+import Analytics from './Analytics/Analytics';
+import Participant from './Participants/Participant';
+import Topic from './Topics/Topic';
 
 const ClassPage = () => {
     const [selectedComponent, setSelectedComponent] = useState(0);

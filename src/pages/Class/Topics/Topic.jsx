@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { QueryContext } from '../../contexts/QueryContext';
-import { TopicContext } from '../../contexts/TopicContext';
-import AnalyticsCards from "./AnalyticsCards";
-import QueryBox from './Queries/QueryBox';
-import Questions from './Questions/Questions';
-import RelatedTopics from './Topics/RelatedTopics';
-import TopicBox from './Topics/TopicBox';
+import { QueryContext } from '../../../contexts/QueryContext';
+import { TopicContext } from '../../../contexts/TopicContext';
+import AnalyticsCards from "../AnalyticsCards";
+import QueryBox from '../Queries/QueryBox';
+import Questions from '../Questions/Questions';
+import RelatedTopics from './RelatedTopics';
+import TopicBox from './TopicBox';
 
 const Topic = React.memo(() => {
     const [selectedRelatedTopic, setSelectedRelatedTopic] = useState('');

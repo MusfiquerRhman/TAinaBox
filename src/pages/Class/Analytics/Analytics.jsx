@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import AnalyticsCard from '../../components/UI Elements/AnalyticsCard';
-import { AnalyticsContext } from '../../contexts/AnalyticsContext';
-import Filers from './Analytics/Filters';
-import LineChart from './Analytics/LineChart';
-import PieChart from './Analytics/PieChart';
+import AnalyticsCard from '../../../components/UI Elements/AnalyticsCard';
+import { AnalyticsContext } from '../../../contexts/AnalyticsContext';
+import Filers from './Filters';
+import LineChart from './LineChart';
+import PieChart from './PieChart';
 
 const Analytics = () => {
     const { analyticsState } = useContext(AnalyticsContext);

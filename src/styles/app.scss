@@ -17,9 +17,9 @@ body {
     background-color: var(--color-background);
     line-height: 1.7;
     background-size: 100vw 100vh;
-    transition: 0.5s;
     color: var(--color-text);
     position: relative;
+    overflow-x: hidden;
 
     &::-webkit-scrollbar {
         width: 0.5rem;
@@ -70,7 +70,6 @@ input::placeholder {
 
 .bordered__button {
     @include flex__center__row;
-
     padding: 0.5rem 3rem;
     font-size: 1rem;
     font-weight: bold;
@@ -93,10 +92,8 @@ input::placeholder {
     font-family: var(--font-bold);
 }
 
-.margin__bottom {
-    &:not(:last-child){
-        margin-bottom: 1rem;
-    }
+.margin__bottom:not(:last-child){
+    margin-bottom: 1rem;    
 }
 
 .margin__top {
@@ -119,7 +116,6 @@ input::placeholder {
     display: flex;
 }
 
-
 .section__buttons {
     background-color: var(--color-gray--light);
     padding: 0.5rem 0;
@@ -138,4 +134,20 @@ input::placeholder {
 
 .margin-left {
     margin: 1rem 1rem 0 1rem;
+}
+
+.input__label {
+    margin-top: 1rem;
+}
+
+input::file-selector-button {
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: none;
+    margin-right: 1rem;
+    background: var(--color-green);
+    color: var(--color-white);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: var(--font-normal);
 }

@@ -11,7 +11,7 @@ const initialState = {
 }
 
 const ClassAndHours = React.memo((props) => {
-    const {handleClose} = props;
+    const { handleClose } = props;
     const { enqueueSnackbar } = useSnackbar();
     const [numberOfSets, setNumberOfSets] = useState(1);
     const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -24,28 +24,24 @@ const ClassAndHours = React.memo((props) => {
             newSchedule[i].days[index] = !newSchedule[i].days[index];
             return newSchedule;
         })
-        console.log(index, i)
     }
 
     const addMoreSection = () => {
-        if (schedules[numberOfSets - 1].days.indexOf(true) === -1) {
-            enqueueSnackbar("You must select at least 1 day of the week", { variant: 'error' });
-        } else {
-            setNumberOfSets(currentCount => {
-                if (currentCount + 1 > 10) {
-                    enqueueSnackbar("You can add at most 10 Schedules at a time, please confirm current schedules first", { variant: 'error' });
-                    return currentCount;
-                }
-                else {
-                    return currentCount + 1;
-                }
-            });
-            setSchedules(currentSchedule => {
-                let newSchedules = currentSchedule.slice();
-                newSchedules.push(JSON.parse(JSON.stringify(initialState)));
-                return newSchedules;
-            })
-        }
+        setNumberOfSets(currentCount => {
+            if (currentCount + 1 > 10) {
+                enqueueSnackbar("You can add at most 10 Schedules at a time, please confirm current schedules first", { variant: 'error' });
+                return currentCount;
+            }
+            else {
+                return currentCount + 1;
+            }
+        });
+        setSchedules(currentSchedule => {
+            let newSchedules = currentSchedule.slice();
+            newSchedules.push(JSON.parse(JSON.stringify(initialState)));
+            return newSchedules;
+        })
+
     }
 
     const changeStartTime = (value, index) => {
@@ -75,11 +71,21 @@ const ClassAndHours = React.memo((props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let confirm = false;
+        schedules.forEach(item => {
+            confirm = item.days.indexOf(true) === -1 ? false : true;
+        })
+        if (!confirm) {
+            enqueueSnackbar("Must select at one day per schedule", { variant: 'error' })
+        }
+        else {
+            enqueueSnackbar("Success", { variant: 'success' })
+        }
     }
 
-    useEffect(() => {
-        console.log(schedules)
-    }, [schedules])
+    // useEffect(() => {
+    //     console.log(schedules)
+    // }, [schedules])
 
     return (
         <div className='popup__container'>
@@ -103,26 +109,26 @@ const ClassAndHours = React.memo((props) => {
                         <div className='popup__input-container'>
                             <p>Start Time</p>
                             <TimePicker i={i}
-                                time={schedules[i].startTime} 
-                                handleChange={changeStartTime} 
+                                time={schedules[i].startTime}
+                                handleChange={changeStartTime}
                             />
                         </div>
                         <div className='popup__input-container'>
                             <p>End Time</p>
                             <TimePicker i={i}
-                                time={schedules[i].endTime} 
-                                handleChange={changeEndTime} 
+                                time={schedules[i].endTime}
+                                handleChange={changeEndTime}
                             />
                         </div>
                         <div className='popup__input-container'>
                             <label htmlFor='class'>Class</label>
-                            <input required 
-                                className='popup__input' 
-                                type='text' 
-                                placeholder='Class' 
-                                id='class' 
-                                value={schedules[i].name} 
-                                onChange={(e) => changeName(e, i)} 
+                            <input required
+                                className='popup__input'
+                                type='text'
+                                placeholder='Class'
+                                id='class'
+                                value={schedules[i].name}
+                                onChange={(e) => changeName(e, i)}
                             />
                         </div>
                     </div>
@@ -134,11 +140,13 @@ const ClassAndHours = React.memo((props) => {
                     <button type='submit' className='popup__button bordered__button'>
                         Confirm Schedule
                     </button>
-                    <button className='popup__button bordered__button warning__button' onClick={handleClose}>
-                        Nevermind
-                    </button>
                 </div>
             </form>
+            <div className='popup__button-container'>
+                <button className='popup__button nevermind bordered__button warning__button' onClick={handleClose}>
+                    Nevermind
+                </button>
+            </div>
         </div>
     )
 })
