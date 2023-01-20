@@ -91,6 +91,7 @@
 
         .popup__input {
             width: 100%;
+            min-width: 25rem;
             padding: 1rem;
             border-bottom: 2px solid var(--color-green);
             background: var(--color-green--very-light);

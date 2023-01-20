@@ -1,50 +1,52 @@
 import { useSnackbar } from 'notistack';
-import React, { useRef, useState } from "react";
+import React, { useReducer, useState } from "react";
 import DropDown from "../UI Elements/DropDown";
+import { ACTION_TYPE, Reducer } from './Reducer';
+
+const initialState = {
+    course: { value: 0, text: 'Per Day' },
+    className: { value: 0, text: 'Per Day' },
+    syllabus: '',
+    timeFrame: '',
+    book: '',
+    linkToBook: '',
+    linkToCanvas: ''
+}
 
 const EditClassDetails = React.memo(props => {
-    const { enqueueSnackbar } = useSnackbar();
     const { handleClose } = props;
+    const { enqueueSnackbar } = useSnackbar();
+    const [state, dispatch] = useReducer(Reducer, initialState);
     const [image, setImage] = useState('');
     const [displayImage, setDisplayImage] = useState('');
-    const [course, setCourse] = useState('');
-    const [className, setClassName] = useState('');
-    const [syllabus, setSyllabus] = useState('');
-    const [timeFrame, setTimeFrame] = useState('');
-    const [book, setBook] = useState('');
 
-    const handleChangeCourseName = (e) => {
-        e.preventDefault()
-        setCourse(e.target.value);
+
+    const changeValue = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: ACTION_TYPE.CHANGE_VALUE,
+            payload: {
+                name: e.target.name,
+                value: e.target.value
+            }
+        })
     }
 
-    const handleChangeClass = e => {
+    const changeFile = (e) => {
         e.preventDefault();
-        setClassName(e.target.value);
-    }
-
-    const handleChangeSyllabus = e => {
-        e.preventDefault();
-        setSyllabus(e.target.files[0]);
-    }
-
-    const handleChangeTimeFrame = e => {
-        e.preventDefault();
-        // if(e.target.files[0].type !== 'application/pdf'){
-        //     enqueueSnackbar("Select a pdf", { variant: 'error' });
-        // }
-        setTimeFrame(e.target.files[0]);
-    }
-
-    const handleChangeBook = e => {
-        e.preventDefault();
-        setBook(e.target.files[0]);
+        dispatch({
+            type: ACTION_TYPE.CHANGE_VALUE,
+            payload: {
+                name: e.target.name,
+                value: e.target.files[0]
+            }
+        })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(state)
 
-        console.log(syllabus, timeFrame, book)
     }
 
     const options = [
@@ -88,19 +90,19 @@ const EditClassDetails = React.memo(props => {
                 <div className='popup__input-container'>
                     <DropDown
                         title={'Courses'}
-                        value={0}
-                        name={'Courses'}
+                        value={state.course.value}
+                        name={'course'}
                         options={options}
-                        onChange={handleChangeCourseName}
+                        onChange={changeValue}
                     />
                 </div>
                 <div className='popup__input-container'>
                     <DropDown
                         title={'Class'}
-                        value={0}
-                        name={'Class'}
+                        value={state.className.value}
+                        name={'className'}
                         options={options}
-                        onChange={handleChangeClass}
+                        onChange={changeValue}
                     />
                 </div>
                 <div className='popup__input-container'>
@@ -109,21 +111,18 @@ const EditClassDetails = React.memo(props => {
                         className='file__input' 
                         type="file" 
                         id="syllabus" 
-                        onChange={(e) => {
-                            handleChangeSyllabus(e);
-                        }}
+                        name='syllabus'
+                        onChange={changeFile}
                     />
                 </div>
                 <div className='popup__input-container'>
-                    <label htmlFor='timeframe'>Time Frame</label>
+                    <label htmlFor='timeFrame'>Time Frame</label>
                     <input accept=".pdf" 
-                        name='timeframe' 
+                        name='timeFrame' 
                         className='file__input' 
                         type="file" 
-                        id="timeframe" 
-                        onChange={(e) => {
-                            handleChangeTimeFrame(e);
-                        }}
+                        id="timeFrame" 
+                        onChange={changeFile}
                     />
                 </div>
                 <div className='popup__input-container'>
@@ -133,9 +132,31 @@ const EditClassDetails = React.memo(props => {
                         className='file__input' 
                         type="file" 
                         id="book" 
-                        onChange={(e) => {
-                            handleChangeBook(e);
-                        }}
+                        onChange={changeFile}
+                    />
+                </div>
+                <div className='popup__input-container'>
+                    <label htmlFor='book'>Link to Book</label>
+                    <input
+                        name='linkToBook' 
+                        className='popup__input' 
+                        placeholder='Link to Book'
+                        value={state.linkToBook}
+                        type="url" 
+                        id="booklink" 
+                        onChange={changeValue}
+                    />
+                </div>
+                <div className='popup__input-container'>
+                    <label htmlFor='canvas'>Link to Canvas</label>
+                    <input
+                        name='linkToCanvas' 
+                        className='popup__input' 
+                        placeholder='Link to Canvas'
+                        type="url" 
+                        id="canvas" 
+                        value={state.linkToCanvas}
+                        onChange={changeValue}
                     />
                 </div>
                 <div className='popup__button-container'>
