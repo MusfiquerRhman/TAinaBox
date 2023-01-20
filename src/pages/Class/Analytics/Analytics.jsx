@@ -98,14 +98,14 @@ const Analytics = () => {
                     </div>
                     <div className='analytics__cards'>
                         <AnalyticsCard ratio={true} value={'1:345'} text={'Average Rate Links Clicked per Inquiry'}/>
-                        <AnalyticsCard value={12345} text={'User Active Today'}/>
-                        <AnalyticsCard value={12345} text={'User Active This Week'}/>
-                        <AnalyticsCard value={12345} text={'Inactive users'}/>
-                    </div>
-                    <div className='analytics__cards'>
                         <AnalyticsCard value={12.35} text={'Average Inquiries per Active User Per Day'}/>
                         <AnalyticsCard value={12.35} text={'Average Inquiries per Active User Per Week'}/>
                         <AnalyticsCard value={12.34} text={'Average Inquiries per User Overall'}/>
+                    </div>
+                    <div className='analytics__cards'>
+                        <AnalyticsCard value={12345} text={'User Active Today'}/>
+                        <AnalyticsCard value={12345} text={'User Active This Week'}/>
+                        <AnalyticsCard value={12345} text={'Inactive users'}/>
                     </div>
                 </div>
             </div>

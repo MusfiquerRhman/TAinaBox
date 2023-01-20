@@ -1,5 +1,6 @@
 import Dialog from '@mui/material/Dialog';
 import React, { useCallback, useContext, useState } from "react";
+import RemoveFromConsideration from '../../../components/Popups/RemoveFromConsideration';
 import TopicPopup from "../../../components/Popups/TopicPopup";
 import SearchBox from '../../../components/UI Elements/SearchBox';
 import { TopicContext } from "../../../contexts/TopicContext";
@@ -12,6 +13,7 @@ const TopicBox = React.memo(() => {
 
     const [openAddTopic, setOpenAddTopic] = useState(false);
     const [openEditTopic, setOpenEditTopic] = useState(false);
+    const [openRemove, setOpenRemove] = useState(false);
 
     const handleClickOpenAddTopic = () => {
         setOpenAddTopic(true);
@@ -25,7 +27,7 @@ const TopicBox = React.memo(() => {
     const handleSubmitAddTopic = (e) => {
         e.preventDefault();
 
-        
+
         // TODO:
     }
 
@@ -41,6 +43,22 @@ const TopicBox = React.memo(() => {
 
     const handleClickOpenEditTopic = () => {
         setOpenEditTopic(true);
+    }
+
+    const handleOpenRemove = (e) => {
+        e.preventDefault();
+        setOpenRemove(true)
+    }
+
+    const handleCloseRemove = e => {
+        e.preventDefault()
+        setOpenRemove(false);
+    }
+
+    const handleSubmitRemoveFromConsideration = (e) => {
+        e.preventDefault();
+
+        // TODO:
     }
 
 
@@ -63,6 +81,9 @@ const TopicBox = React.memo(() => {
                 <Dialog onClose={handleCloseEditTopic} open={openEditTopic}>
                     <TopicPopup section='Topic' type='Edit' handleSubmit={handleSubmitEditTopic} />
                 </Dialog>
+                <Dialog onClose={handleCloseRemove} open={openRemove}>
+                    <RemoveFromConsideration handleSubmit={handleSubmitRemoveFromConsideration} />
+                </Dialog>
             </div>
             <div className="topic__section">
                 <SearchBox text='topics' />
@@ -72,9 +93,21 @@ const TopicBox = React.memo(() => {
                     selected={selected}
                 />
                 <div className="section__buttons">
-                    <button className='bordered__button section__button' onClick={handleClickOpenEditTopic}>Edit Topic</button>
-                    <button className='bordered__button section__button warning__button'>Remove From Consideration</button>
-                    <button className='bordered__button section__button' onClick={handleClickOpenAddTopic}>Add Topic</button>
+                    <button className='bordered__button section__button'
+                        onClick={handleClickOpenEditTopic}
+                    >
+                        Edit Topic
+                    </button>
+                    <button className='bordered__button section__button warning__button'
+                        onClick={handleOpenRemove}
+                    >
+                        Remove From Consideration
+                    </button>
+                    <button className='bordered__button section__button'
+                        onClick={handleClickOpenAddTopic}
+                    >
+                        Add Topic
+                    </button>
                 </div>
             </div>
         </>

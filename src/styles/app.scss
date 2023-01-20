@@ -144,6 +144,10 @@ textarea::placeholder {
     margin-top: 1rem;
 }
 
+.semibold__text {
+    font-family: var(--font-semibold);
+}
+
 input::file-selector-button {
     font-weight: bold;
     padding: 1rem 2rem;

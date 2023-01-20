@@ -26,14 +26,14 @@ const Filers = React.memo(() => {
     return (
         <div className='analytics__control'>
             <DatePicker
-                name={'startDate'}
+                name={'Start Date'}
                 min={'2000-01-01'}
                 max={analyticsState.today}
                 value={analyticsState.startDate}
                 onChange={handleChange}
             />
             <DatePicker
-                name={'endDate'}
+                name={'End Date'}
                 min={'2000-01-01'}
                 max={analyticsState.today}
                 value={analyticsState.endDate}

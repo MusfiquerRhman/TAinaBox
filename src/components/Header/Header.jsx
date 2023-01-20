@@ -2,13 +2,21 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EditIcon from '@mui/icons-material/Edit';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Dialog from '@mui/material/Dialog';
+import Slide from '@mui/material/Slide';
 import React, { useState } from "react";
 import ClassAndHours from '../Popups/ClassAndHours';
 import EditClassDetails from '../Popups/EditClassDetails';
+import ManageRole from '../Popups/ManageRole';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 
 const Header = () => {
     const [openSchedule, setOpenSchedule] = useState(false);
     const [openEditClass, setOpenEditClass] = useState(false);
+    const [openManageRole, setOpenManageRole] = useState(false);
 
     const handleClickEditSchedule = (e) => {
         e.preventDefault();
@@ -30,14 +38,32 @@ const Header = () => {
         setOpenEditClass(false);
     }
 
+    const handleClickManageRole = (e) => {
+        e.preventDefault();
+        setOpenManageRole(true);
+    }
+
+    const handleCloseManageRole = (e) => {
+        e.preventDefault();
+        setOpenManageRole(false);
+    }
+
     return (
         <section className="header__container">
             <div className='popup'>
                 <Dialog onClose={handleCloseSchedule} open={openSchedule}>
                     <ClassAndHours handleClose={handleCloseSchedule} />
-                </Dialog>                
+                </Dialog>
                 <Dialog onClose={handleCloseEditClass} open={openEditClass}>
                     <EditClassDetails handleClose={handleCloseEditClass} />
+                </Dialog>
+                <Dialog
+                    fullScreen
+                    open={openManageRole}
+                    onClose={handleCloseManageRole}
+                    TransitionComponent={Transition}
+                >
+                    <ManageRole handleClose={handleCloseManageRole} />
                 </Dialog>
             </div>
             <div className="header__details">
@@ -63,7 +89,7 @@ const Header = () => {
                     <AccessTimeIcon sx={{ marginRight: '0.5rem' }} />
                     Location and Hours
                 </button>
-                <button className="bordered__button margin__bottom">
+                <button className="bordered__button margin__bottom" onClick={handleClickManageRole}>
                     <ManageAccountsIcon sx={{ marginRight: '0.5rem' }} />
                     Manage Role
                 </button>
