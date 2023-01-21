@@ -13,12 +13,19 @@ const ClassPage = () => {
         setSelectedComponent(componentIndex);
     }, []);
 
+    const tabs = [
+        {name: 'By Topic', index: 0},
+        {name: 'By Participant', index: 1},
+        {name: 'Analytics', index: 2},
+    ]
+
     return (
         <>
             <Header />
             <section className='class__container'>
                 <Tabs activeIndex={selectedComponent} 
                     handleChange={handleChangeSelectComponent}
+                    tabs={tabs}
                 />
                 {selectedComponent === 0 && (
                     <Topic />

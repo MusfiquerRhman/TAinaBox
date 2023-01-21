@@ -10,10 +10,7 @@
 }
 
 .popup__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flex__center__column;
     padding: 1rem 0;
 
     .form__container {
@@ -86,8 +83,6 @@
     .popup__input-container {
         width: 100%;
         margin: 0.5rem 0;
-        display: flex;
-        flex-direction: column;
 
         .popup__input {
             width: 100%;
@@ -132,4 +127,71 @@
 .remove__container {
     padding: 2rem;
     text-align: center;
+}
+
+.fullscreen__popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .popup__head {
+        width: 100%;
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+
+        .title-primary{
+            flex: 1;
+            text-align: center;
+        }
+    }
+
+    .popup__body{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 2rem;
+        justify-content: space-between;
+
+        .popup__members{
+            flex: 1;
+            padding: 0 2rem;
+        }
+
+        .popup__roles {
+            flex: 2;
+            padding: 0 5rem;
+
+            .role__buttons {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .role__button {
+                width: calc(50% - 1rem);
+                margin: 0 1rem 1rem 0;
+            }
+        }
+    }
+
+    .bordered__button {
+        padding: 1rem 2rem;
+    }
+
+    .contained__button{
+        font-size: 1.1rem;
+    }
+
+    .popup__button-container {
+        width: 25%;
+
+        .popup__button {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+    }
 }

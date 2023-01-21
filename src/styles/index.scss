@@ -9,6 +9,7 @@
 @import '../pages/Class/ClassStyles.scss';
 @import '../pages/Profile/Profile.scss';
 @import '../components/Popups/popupStyles.scss';
+@import '../pages//User/UserStyles.scss';
 
 
 :root {
@@ -21,7 +22,7 @@
   --color-green--light: #78be1f;
   --color-green--medium: #4BA23F;
   --color-green--dark: #00843d; // used
-  --color-green--very-light: #e8f5e9; 
+  --color-green--very-light: #e8f5e9; //used
   --color-green-inverse: #D8A2C7; // used
 
   --color-blue: #35a2eb;

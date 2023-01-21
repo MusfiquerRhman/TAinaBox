@@ -1,0 +1,103 @@
+.user__filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-white);
+    box-shadow: 2px 2px 5px var(--color-shadow);
+    border-radius: var(--border-radius);
+    padding-bottom: 2rem;
+
+    .user__filters-options--box {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .user__filters-options {
+            flex: 1;
+            padding: 2rem;
+
+            label {
+                margin-top: 0.5rem;
+            }
+
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+
+            .filters__input {
+                width: 100%;
+                min-width: 25rem;
+                padding: 1rem;
+                border-bottom: 2px solid var(--color-green);
+                background: var(--color-white);
+                font-size: 1rem;
+            }
+
+            .chip__box {
+                background: var(--color-white);
+                box-shadow: 0 0 5px var(--color-shadow);
+                border-radius: var(--border-radius);
+                padding: 1rem;
+                position: relative;
+
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+
+                .search {
+                    .search__box {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+
+                        .search__input {
+                            padding: 1rem;
+                            font-size: 1rem;
+                            background: var(--color-white);  
+                            flex: 1;
+                        }
+
+                        .search__clear {
+                            padding: 0 1rem;
+                            margin: auto;
+                        }
+                    }
+                }
+
+                .search__results {
+                    position: fixed;
+                    background: var(--color-white);
+                    z-index: 1;
+                    padding: 1rem;    
+                    box-shadow: 2px 2px 5px var(--color-shadow);
+                    border-radius: var(--border-radius);
+
+                    .search_item {
+                        padding: 0.5rem;
+
+                        &:hover {
+                            background-color: var(--color-white);
+                            border-radius: var(--border-radius);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .user__filter-buttons {
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+
+        .bordered__button {
+            flex: 1;
+            box-shadow: 0 0 5px var(--color-shadow);
+
+            &:not(:last-child){
+                margin-right: 1rem;
+            }
+        }
+    }
+}

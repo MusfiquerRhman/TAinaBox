@@ -81,6 +81,7 @@ textarea::placeholder {
     background: transparent;
     border: 2px solid var(--color-green);
     border-radius: var(--border-radius);
+    font-family: var(--font-bold);
 }
 
 .contained__button {
@@ -121,7 +122,7 @@ textarea::placeholder {
 }
 
 .section__buttons {
-    background-color: var(--color-gray--light);
+    // background-color: var(--color-gray--light);
     padding: 0.5rem 0;
     border-radius: var(--border-radius);
 }
@@ -164,4 +165,5 @@ label {
     color: var(--color-text);
     font-size: 1rem;
     font-family: var(--font-semibold);
+    display: block;
 }

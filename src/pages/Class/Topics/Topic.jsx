@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import AnalyticsCards from "../../../components/UI Elements/AnalyticsCards";
 import { QueryContext } from '../../../contexts/QueryContext';
 import { TopicContext } from '../../../contexts/TopicContext';
-import AnalyticsCards from "../AnalyticsCards";
 import QueryBox from '../Queries/QueryBox';
 import Questions from '../Questions/Questions';
 import RelatedTopics from './RelatedTopics';

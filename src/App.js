@@ -9,8 +9,15 @@ import {
   ProfileProvider,
   QueryProvider,
   TopicProvider,
+  UserProvider,
 } from "./contexts";
-import { ClassPage, ForgotPassword, LoginPage, Profile } from "./pages";
+import {
+  ClassPage,
+  ForgotPassword,
+  LoginPage,
+  Profile,
+  Users,
+} from "./pages";
 
 const Providers = (props) => {
   return (
@@ -18,7 +25,9 @@ const Providers = (props) => {
       <QueryProvider>
         <ParticipantProvider>
           <AnalyticsProvider>
-            <ProfileProvider>{props.children}</ProfileProvider>
+            <UserProvider>
+              <ProfileProvider>{props.children}</ProfileProvider>
+            </UserProvider>
           </AnalyticsProvider>
         </ParticipantProvider>
       </QueryProvider>
@@ -44,6 +53,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<ClassPage />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/users" element={<Users />} />
               </Routes>
             </Providers>
           </SideBar>
@@ -51,6 +61,6 @@ const App = () => {
       </SnackbarProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

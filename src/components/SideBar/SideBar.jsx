@@ -24,7 +24,7 @@ const SideBar = React.memo((props) => {
                 </div>
                 <div className='sidebar__links'>
                     <CustomNavLinks Icon={ClassIcon} link='/' text="Class"/>
-                    <CustomNavLinks Icon={GroupIcon} link='/user' text="User"/>
+                    <CustomNavLinks Icon={GroupIcon} link='/users' text="User"/>
                     <CustomNavLinks Icon={FeedbackIcon} link='/feedback' text="Feedback"/>
                 </div>
             </div>

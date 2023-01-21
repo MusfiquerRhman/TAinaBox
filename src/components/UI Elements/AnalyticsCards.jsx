@@ -1,5 +1,5 @@
 import React from "react";
-import AnalyticsCard from "../../components/UI Elements/AnalyticsCard";
+import AnalyticsCard from "./AnalyticsCard";
 
 const AnalyticsCards = React.memo(props => {
     return (
