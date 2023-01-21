@@ -10,9 +10,9 @@
 @import '../pages/Profile/Profile.scss';
 @import '../components/Popups/popupStyles.scss';
 @import '../pages//User/UserStyles.scss';
+@import '../components/Table/table.scss'
 
-
-:root {
+;:root {
   --color-background: #ffffff; // used
   --color-white: #ffffff; // used
   --color-text: #000000; // used

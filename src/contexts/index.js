@@ -1,4 +1,5 @@
 export { AnalyticsProvider } from './AnalyticsContext';
+export { FeedBackProvider } from './FeedBackContext';
 export { ParticipantProvider } from './ParticipantsContext';
 export { ProfileProvider } from './ProfileContext';
 export { QueryProvider } from './QueryContext';

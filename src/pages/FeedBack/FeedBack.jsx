@@ -3,7 +3,7 @@ import Tabs from "../../components/UI Elements/Tabs";
 import Filters from "./Filters";
 import Table from "./Table";
 
-const Users = () => {
+const FeedBack = () => {
     const [selectedComponent, setSelectedComponent] = useState(0);
 
     const handleChangeSelectComponent = useCallback((e, componentIndex) => {
@@ -12,10 +12,8 @@ const Users = () => {
     }, []);
 
     const tabs = [
-        { name: 'All', index: 0 },
-        { name: 'Admin', index: 1 },
-        { name: 'Faculty', index: 2 },
-        { name: 'Students', index: 3 },
+        { name: 'Current', index: 0 },
+        { name: 'Historical', index: 1 },
     ]
 
     return (
@@ -29,7 +27,6 @@ const Users = () => {
                             tabs={tabs}
                         />
                     </div>
-                    <button className="bordered__button">Crawl For new User</button>
                 </div>
                 <div className="user__table">
                     <Table />
@@ -39,4 +36,4 @@ const Users = () => {
     )
 }
 
-export default Users;
+export default FeedBack;

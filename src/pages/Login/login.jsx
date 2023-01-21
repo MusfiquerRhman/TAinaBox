@@ -2,15 +2,18 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import EmailIcon from '@mui/icons-material/Email';
 import LoginIcon from '@mui/icons-material/Login';
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PasswordField from '../../components/UI Elements/PasswordField';
 import TextFieldWithIcon from '../../components/UI Elements/TextFieldWithIcon';
+import { UserContext } from '../../contexts/UserContext';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { enqueueSnackbar } = useSnackbar();
+    const {userState, userDispatch, actionType} = useContext(UserContext)
+
 
     const onChangeEmail = useCallback(e => {
         e.preventDefault();
@@ -26,7 +29,17 @@ const LoginPage = () => {
         if(!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))){
             enqueueSnackbar("Invalid Email Address", { variant: 'error' });
         }
+        else {
+            userDispatch({
+                type: actionType.ADD_DATA,
+                payload: {
+                    name: 'isLoggedIn',
+                    value: true
+                }
+            })
+        }
     }
+
 
     return (
         <section className='login__container'>

@@ -1,23 +1,26 @@
 import { SnackbarProvider } from "notistack";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import SideBar from "./components/SideBar/SideBar";
 import {
   AnalyticsProvider,
+  FeedBackProvider,
   ParticipantProvider,
   ProfileProvider,
   QueryProvider,
   TopicProvider,
-  UserProvider,
 } from "./contexts";
 import {
   ClassPage,
+  FeedBack,
   ForgotPassword,
   LoginPage,
   Profile,
   Users,
 } from "./pages";
+
+import { UserContext } from "./contexts/UserContext";
 
 const Providers = (props) => {
   return (
@@ -25,9 +28,9 @@ const Providers = (props) => {
       <QueryProvider>
         <ParticipantProvider>
           <AnalyticsProvider>
-            <UserProvider>
-              <ProfileProvider>{props.children}</ProfileProvider>
-            </UserProvider>
+              <ProfileProvider>
+                <FeedBackProvider>{props.children}</FeedBackProvider>
+              </ProfileProvider>
           </AnalyticsProvider>
         </ParticipantProvider>
       </QueryProvider>
@@ -36,7 +39,12 @@ const Providers = (props) => {
 };
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { userState } = useContext(UserContext)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(userState.isLoggedIn)
+}, [userState.isLoggedIn])
 
   return (
     <BrowserRouter>
@@ -54,6 +62,7 @@ const App = () => {
                 <Route path="/" element={<ClassPage />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/users" element={<Users />} />
+                <Route path="/feedback" element={<FeedBack />} />
               </Routes>
             </Providers>
           </SideBar>

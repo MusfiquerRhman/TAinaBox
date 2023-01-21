@@ -4,7 +4,7 @@ import Chip from '@mui/material/Chip';
 import React, { useContext, useDeferredValue, useEffect, useState } from "react";
 import UserPopup from '../../components/Popups/UserPopup';
 import DropDown from '../../components/UI Elements/DropDown';
-import { UserContext } from "../../contexts/UserContext";
+import { FeedBackContext } from '../../contexts/FeedBackContext';
 
 const coursesList = [
     'CSE 100',
@@ -21,14 +21,13 @@ const coursesList = [
 ]
 
 const options = [
-    { value: 0, text: 'Student' },
-    { value: 1, text: 'Teacher' },
-    { value: 2, text: 'Dean' },
-    { value: 3, text: 'Co Teacher' },
+    { value: 0, text: 'Positive' },
+    { value: 1, text: 'Negative' },
+    { value: 2, text: 'Neutral' },
 ]
 
 const Filters = React.memo(props => {
-    const { userState, userDispatch, actionType } = useContext(UserContext);
+    const { feedBackState, feedBackDispatch, actionType } = useContext(FeedBackContext);
     const [searchedTermCourses, setSearchedTermCourses] = useState('');
     const [searchResultCourses, setSearchResultCourses] = useState([]);
     const deferredSearchTermCourses = useDeferredValue(searchedTermCourses).toLowerCase();
@@ -39,14 +38,10 @@ const Filters = React.memo(props => {
 
     const [openAddParticipant, setOpenAddParticipant] = useState(false);
 
-    const handleAddOpenCreateUser = () => {
-        setOpenAddParticipant(true);
-    }
-
     const changeValue = (e) => {
         e.preventDefault();
 
-        userDispatch({
+        feedBackDispatch({
             type: actionType.ADD_DATA,
             payload: {
                 name: e.target.name,
@@ -56,7 +51,7 @@ const Filters = React.memo(props => {
     }
 
     const handleDeleteChips = (value, name) => {
-        userDispatch({
+        feedBackDispatch({
             type: actionType.DELETE_CHIPS,
             payload: {
                 value: value,
@@ -66,7 +61,7 @@ const Filters = React.memo(props => {
     }
 
     const handleChangeAddChips = (value, name) => {
-        userDispatch({
+        feedBackDispatch({
             type: actionType.ADD_CHIPS,
             payload: {
                 value: value,
@@ -129,41 +124,29 @@ const Filters = React.memo(props => {
                             name='name'
                             className='filters__input'
                             placeholder='First name and/or Last name'
-                            value={userState.name}
+                            value={feedBackState.name}
                             type="text"
                             id="name"
                             onChange={changeValue}
                         />
                     </div>
                     <div>
-                        <label htmlFor='email'>Email</label>
+                        <label htmlFor='inFeedBack'>In Feedback</label>
                         <input
-                            name='email'
+                            name='inFeedBack'
                             className='filters__input'
                             placeholder='Email address'
-                            value={userState.email}
-                            type="email"
-                            id="email"
-                            onChange={changeValue}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='number'>Phone Number</label>
-                        <input
-                            name='number'
-                            className='filters__input'
-                            placeholder='Email address'
-                            value={userState.number}
+                            value={feedBackState.inFeedBack}
                             type="text"
-                            id="number"
+                            id="inFeedBack"
                             onChange={changeValue}
                         />
                     </div>
                     <div>
                         <DropDown
-                            title={'Status'}
-                            value={userState.status}
-                            name={'status'}
+                            title={'Resulting Feedback'}
+                            value={feedBackState.resultingFeedback}
+                            name={'resultingFeedback'}
                             options={options}
                             onChange={changeValue}
                         />
@@ -173,7 +156,7 @@ const Filters = React.memo(props => {
                     <div className='chip__box'>
                         <label htmlFor='number'>Courses</label>
                         <div className='chips'>
-                            {userState.course.map((value) => (
+                            {feedBackState.course.map((value) => (
                                 <Chip sx={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
                                     key={value}
                                     label={value}
@@ -218,7 +201,7 @@ const Filters = React.memo(props => {
                     <div className='chip__box' >
                         <label htmlFor='number'>Classes</label>
                         <div className='chips'>
-                            {userState.class.map((value) => (
+                            {feedBackState.class.map((value) => (
                                 <Chip sx={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
                                     key={value}
                                     label={value}
@@ -265,7 +248,6 @@ const Filters = React.memo(props => {
             <div className='user__filter-buttons'>
                 <button className='bordered__button warning__button'>Reset Filter</button>
                 <button className='bordered__button'>Filter</button>
-                <button className='bordered__button' onClick={handleAddOpenCreateUser}>Create User</button>
             </div>
         </div>
     )

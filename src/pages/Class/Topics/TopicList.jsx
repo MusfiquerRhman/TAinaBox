@@ -3,7 +3,7 @@ import { TopicContext } from '../../../contexts/TopicContext';
 import { compare } from '../../helperFunctions';
 import TopicRow from './TopicRow';
 
-export function getComparator(sortTopic, sortTime, orderBy) {
+function getComparator(sortTopic, sortTime, orderBy) {
     if (orderBy === 'name') {
         return compare(sortTopic, orderBy);
     }
