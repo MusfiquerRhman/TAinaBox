@@ -7,6 +7,7 @@ import { TopicContext } from "../../../contexts/TopicContext";
 import SortTopicsButtons from "./SortTopicsButtons";
 import TopicList from "./TopicList";
 
+
 const TopicBox = React.memo(() => {
     const [selected, setSelected] = useState('');
     const { topicDispatch, topicActionType } = useContext(TopicContext);

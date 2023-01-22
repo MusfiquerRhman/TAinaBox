@@ -3,24 +3,7 @@ import TableFoot from '../../components/Table/TableFoot';
 import TableRow from '../../components/Table/TableRow';
 import SortButton from '../../components/UI Elements/SortButton';
 import { FeedBackContext } from '../../contexts/FeedBackContext';
-
-function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-        return -1;
-    }
-    if (b[orderBy] > a[orderBy]) {
-        return 1;
-    }
-    return 0;
-}
-
-function getComparator(order, orderBy) {
-    return order === true
-        ? (a, b) => descendingComparator(a, b, orderBy)
-        : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-
+import { compare } from '../helperFunctions';
 
 const Table = React.memo(() => {
     const { feedBackState, feedBackDispatch, actionType } = useContext(FeedBackContext);
@@ -50,7 +33,7 @@ const Table = React.memo(() => {
             }
         })
     };
-    
+
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -87,17 +70,19 @@ const Table = React.memo(() => {
             </thead>
             <tbody>
                 {feedBackState.feedBack
-                    .sort(getComparator(
+                    .sort(compare(
                         feedBackState.order,
                         feedBackState.sortBy,
                     )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((item, index) => (
-                        <TableRow 
-                            item={item}
-                            handleClick={handleClick}
-                            handleClose={handleClose}
-                            anchorEl={anchorEl}
-                        />
+                        <React.Fragment key={index}>
+                            <TableRow
+                                item={item}
+                                handleClick={handleClick}
+                                handleClose={handleClose}
+                                anchorEl={anchorEl}
+                            />
+                        </React.Fragment>
                     ))}
             </tbody>
             <TableFoot page={page}

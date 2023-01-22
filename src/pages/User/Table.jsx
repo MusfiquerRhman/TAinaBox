@@ -4,24 +4,9 @@ import TableRow from '../../components/Table/TableRow';
 import DropDown from '../../components/UI Elements/DropDown';
 import SortButton from '../../components/UI Elements/SortButton';
 import { UserContext } from '../../contexts/UserContext';
+import { compare } from '../helperFunctions';
 
-function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-        return -1;
-    }
-    if (b[orderBy] > a[orderBy]) {
-        return 1;
-    }
-    return 0;
-}
-
-function getComparator(order, orderBy) {
-    return order === true
-        ? (a, b) => descendingComparator(a, b, orderBy)
-        : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-const Table = React.memo(props => {
+const Table = React.memo(() => {
     const { userState, userDispatch, actionType } = useContext(UserContext);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [page, setPage] = useState(0);
@@ -102,26 +87,26 @@ const Table = React.memo(props => {
             </thead>
             <tbody>
                 {userState.users
-                    .sort(getComparator(
-                        userState.order,
-                        userState.sortBy,
-                    )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .sort(compare(userState.order, userState.sortBy))
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((item, index) => (
-                        <TableRow
-                            item={item}
-                            handleClick={handleClick}
-                            handleClose={handleClose}
-                            anchorEl={anchorEl}
-                        >
-                            <td>
-                                <DropDown
-                                    value={userState.status}
-                                    name={'status'}
-                                    options={options}
-                                    onChange={changeStatusValue}
-                                />
-                            </td >
-                        </TableRow>
+                        <React.Fragment key={index}>
+                            <TableRow
+                                item={item}
+                                handleClick={handleClick}
+                                handleClose={handleClose}
+                                anchorEl={anchorEl}
+                            >
+                                <td>
+                                    <DropDown
+                                        value={userState.status}
+                                        name={'status'}
+                                        options={options}
+                                        onChange={changeStatusValue}
+                                    />
+                                </td >
+                            </TableRow>
+                        </React.Fragment>
                     ))}
             </tbody>
             <TableFoot page={page}
